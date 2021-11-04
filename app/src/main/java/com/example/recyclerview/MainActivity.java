@@ -1,6 +1,7 @@
 package com.example.recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -8,9 +9,6 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerItem recyclerItem;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +22,26 @@ public class MainActivity extends AppCompatActivity {
                 (R.drawable.ic_baseline_sentiment_satisfied_alt_24, "Happy", "Happy emoji"));
         recyclerItems.add(new RecyclerItem
                 (R.drawable.ic_baseline_sentiment_very_dissatisfied_24, "Very sad", "Very sad emoji"));
+        recyclerItems.add(new RecyclerItem
+                (R.drawable.ic_baseline_sentiment_dissatisfied_24, "Sad", "Sad emoji"));
+        recyclerItems.add(new RecyclerItem
+                (R.drawable.ic_baseline_sentiment_satisfied_alt_24, "Happy", "Happy emoji"));
+        recyclerItems.add(new RecyclerItem
+                (R.drawable.ic_baseline_sentiment_very_dissatisfied_24, "Very sad", "Very sad emoji"));
+        recyclerItems.add(new RecyclerItem
+                (R.drawable.ic_baseline_sentiment_dissatisfied_24, "Sad", "Sad emoji"));
+        recyclerItems.add(new RecyclerItem
+                (R.drawable.ic_baseline_sentiment_satisfied_alt_24, "Happy", "Happy emoji"));
+        recyclerItems.add(new RecyclerItem
+                (R.drawable.ic_baseline_sentiment_very_dissatisfied_24, "Very sad", "Very sad emoji"));
+
+        RecyclerView recyclerItem = findViewById(R.id.recycler_view); // клєпає розмітку з кодом
+        recyclerItem.setHasFixedSize(true);
+
+        RecyclerView.Adapter adapter = new RecyclerViewAdapter(recyclerItems); // міст з даними; заповнює RecyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this); // керує розташуванням RecyclerView
+
+        recyclerItem.setAdapter(adapter);
+        recyclerItem.setLayoutManager(layoutManager);
     }
 }
